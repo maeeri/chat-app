@@ -9,7 +9,7 @@ Features
     Real-time chat through web socket
     
 Possible future features
-    Online status of friends
-    Private chat
+        Online status of friends
+        Private chat
     
     

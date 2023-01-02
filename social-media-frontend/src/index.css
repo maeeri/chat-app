@@ -143,8 +143,6 @@ img {
   margin-left: 2%;
 }
 
-
-
 @media screen and (max-width: 750px) {
   .d-sm-none {
     display: none;
@@ -203,6 +201,11 @@ img {
   text-decoration: none;
   color: black;
   font-size: 1.5em;
+}
+
+.front-page-link {
+  display: inline;
+  font-size: 14px;
 }
 
 .chat-link {
@@ -299,6 +302,11 @@ img {
   border: none;
 }
 
+.front-page-button {
+  text-align: center;
+  margin: 0 auto;
+}
+
 .box {
   box-shadow: 1px 1px 8px black;
 }
@@ -336,6 +344,7 @@ img {
   background-color: white;
   color: black;
   margin: 5%;
+  display: inline;
 }
 
 .menu {

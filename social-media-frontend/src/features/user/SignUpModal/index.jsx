@@ -51,7 +51,7 @@ function SignUpModal() {
       <Modal.Body>
         <Form onSubmit={signup}>
           <Form.Group value={username} name="username" controlId="username">
-            <Form.Label>username (email address)</Form.Label>
+            <Form.Label>username</Form.Label>
             <Form.Control
               onChange={({ target }) => {
                 setUsername(target.value)

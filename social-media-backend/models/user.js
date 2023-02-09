@@ -9,10 +9,15 @@ const userSchema = mongoose.Schema({
     unique: true,
     message: 'username must be at least 3 characters long and unique',
   },
-  name: String,
+  name: {
+    type: String,
+    required: true,
+    message: 'username is required'
+  },
   password: {
     type: String,
     required: true,
+    message: 'password is required'
   },
   role: {
     type: String,

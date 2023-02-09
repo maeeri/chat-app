@@ -2,15 +2,11 @@ import { Modal, Col, Row } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleShowChat } from 'features/show/showSlice'
 import Chatbox from './Chatbox'
-import Sidebar from './Sidebar'
 
 function ChatModal() {
   const showChat = useSelector((state) => state.show.chat)
-  const showSidebar = useSelector((state) => state.show.sidebar)
   const user = useSelector((state) => state.user)
   const dispatch = useDispatch()
-
-  const show = { display: showSidebar ? 'inline-block' : 'none' }
 
   const handleClose = () => {
     dispatch(toggleShowChat(false))
@@ -28,9 +24,6 @@ function ChatModal() {
           <Modal.Body className="chat-modal-body">
             <Col>
               <Chatbox />
-            </Col>
-            <Col style={show}>
-              <Sidebar />
             </Col>
           </Modal.Body>
         )}

@@ -1,9 +1,10 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:5000/api/login'
+let location = document.location
+let baseUrl = `${location.protocol}//${location.hostname}:8080/api/login`
 
 const login = async (creds) => {
-  const response = await axios.post(baseUrl, creds)
+  const response = await axios.post(`${baseUrl}`, creds)
   return response.data
 }
 

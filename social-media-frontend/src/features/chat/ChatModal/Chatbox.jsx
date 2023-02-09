@@ -10,16 +10,18 @@ function ChatboxContainer(props) {
   const user = useSelector((state) => state.user)
   const onlineUsers = useSelector((state) => state.chat.onlineUsers)
   const messages = useSelector((state) => state.chat.messages)
+  const { dispatchMessages, dispatchAddOnlineUser, dispatchOnlineUsers } = props
 
   useEffect(() => {
-    addUser()
-    props.dispatchMessages()
-  }, [messages])
+    function addUser() {
+      console.log(onlineUsers)
+      dispatchAddOnlineUser(user.username, user.id, user.profilePicture)
+      dispatchOnlineUsers(onlineUsers)
+    }
 
-  const addUser = () => {
-    props.dispatchAddOnlineUser(user.username, user.id, user.profilePicture)
-    props.dispatchOnlineUsers(onlineUsers)
-  }
+    addUser()
+    dispatchMessages()
+  }, [messages])
 
   return (
     <MDBContainer fluid className="py-5" style={{ backgroundColor: '#eee' }}>

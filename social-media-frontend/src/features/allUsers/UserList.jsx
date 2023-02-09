@@ -68,10 +68,6 @@ function UserList() {
             <th className="d-sm-none d-md-block">name</th>
             <th className="d-sm-none d-md-block">username</th>
             <th className="d-sm-none d-md-block">role</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -107,7 +103,10 @@ function UserList() {
                           <>
                             {!u.pendingRequests.includes(user.id) &&
                               !user.pendingRequests.includes(u.id) && (
-                                <Button onClick={() => sendFriendRequest(u.id)}>
+                                <Button
+                                  className="friend-btn interactive"
+                                  onClick={() => sendFriendRequest(u.id)}
+                                >
                                   add friend
                                 </Button>
                               )}
@@ -116,7 +115,10 @@ function UserList() {
                             )}
                             {user.pendingRequests.includes(u.id) &&
                               !user.friends.includes(u.id) && (
-                                <Button onClick={() => addToFriendList(u.id)}>
+                                <Button
+                                  className="friend-btn interactive"
+                                  onClick={() => addToFriendList(u.id)}
+                                >
                                   accept friend request
                                 </Button>
                               )}
@@ -131,8 +133,6 @@ function UserList() {
                           </Button>
                         )}
                       </td>
-                      <td></td>
-                      <td></td>
                     </>
                   )}
                 </tr>

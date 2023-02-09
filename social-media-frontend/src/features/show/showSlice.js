@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { addUser } from 'features/chat/chatSlice'
 
 const showSlice = createSlice({
   name: 'show',
-  initialState: { signin: false, signup: false, chat: false, sidebar: false },
+  initialState: { signin: false, signup: false, chat: false },
   reducers: {
     setShowSignIn(state, action) {
       return {
@@ -20,12 +21,6 @@ const showSlice = createSlice({
       return {
         ...state,
         chat: action.payload,
-      }
-    },
-    setShowSidebar(state, action) {
-      return {
-        ...state,
-        sidebar: action.payload,
       }
     },
   },
@@ -49,12 +44,6 @@ export const toggleShowChat = (show) => {
   }
 }
 
-export const toggleShowSidebar = (show) => {
-  return (dispatch) => {
-    dispatch(setShowSidebar(show))
-  }
-}
-
-export const { setShowSignIn, setShowSignUp, setShowChat, setShowSidebar } =
+export const { setShowSignIn, setShowSignUp, setShowChat } =
   showSlice.actions
 export default showSlice.reducer

@@ -4,7 +4,6 @@ import { Container, Image } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import pokemonService from 'services/pokemon'
 import { addProfilePictureToState } from './userSlice'
-import { getOneUser } from 'services/user'
 
 export default function ChangeProfilePicture({ user, setUser }) {
   const token = useSelector((state) => state.token)
@@ -60,13 +59,13 @@ export default function ChangeProfilePicture({ user, setUser }) {
   }
 
   if (!images || images.length === 0) return <Loader />
-
+  
   return (
     <Container>
       <h4>change your profile picture</h4>
-      {images.map((img) => (
+      {images.map((img, index) => (
         <span
-          key={img}
+          key={index}
           title="make this your profile picture"
           onClick={() => addProfilePicture(img)}
         >

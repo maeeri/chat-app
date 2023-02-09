@@ -5,10 +5,17 @@ import {
 } from 'features/chat/chatSlice'
 
 const setupSocket = (dispatch) => {
-  const socket = new WebSocket('ws://localhost:8989')
+  let location = document.location
+  let scheme = 'ws'
+  if (location.protocol === 'https:') {
+    scheme += 's'
+  }
+  let serverUrl = `${scheme}://${location.hostname}:8989`
+  const socket = new WebSocket(serverUrl)
 
   socket.onmessage = (event) => {
     const data = JSON.parse(event.data)
+    console.log(data)
     switch (data.type) {
       case 'chat/setOnlineUsers':
         dispatch(setOnlineUsers(data.payload))

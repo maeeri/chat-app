@@ -1,3 +1,4 @@
+/*eslint-disable*/
 const WebSocket = require('ws')
 
 const logger = require('../utils/logger')
@@ -21,19 +22,22 @@ wss.on('connection', (ws) => {
 
   ws.on('message', (message) => {
     const data = JSON.parse(message)
-
-    /*eslint-disable*/
+    logger.info(data)
     switch (data.type) {
       case 'chat/addOnlineUser': {
         index = users.length
         const user = data.payload
-        if (!users.length === 0 || users.every((u) => u.id !== user.id)) {
+
+        if (users.every((u) => u.id !== user.id)) {
           users.push(user)
           ws.send(
             JSON.stringify({ type: 'chat/setOnlineUsers', payload: users })
           )
           broadcast({ type: 'chat/setOnlineUsers', payload: users }, ws)
+        } else {
+          broadcast({ type: 'chat/setOnlineUsers', payload: users }, ws)
         }
+
         break
       }
       case 'chat/addChatMessage': {
@@ -68,43 +72,36 @@ wss.on('connection', (ws) => {
         )
         break
       }
-      case 'chat/removeOnlineUser': {
-        const user = data.payload
+      case 'chat/removeOnlineUser':
+        {
+          const user = users.find((u) => u.id === data.payload.id)
+          const index = users.indexOf(user)
+          console.log(users, user, index)
+          if (index > -1) users.splice(index, 1)
+          ws.send(
+            JSON.stringify(
+              {
+                type: 'chat/userLeft',
+                payload: user,
+              },
+              ws
+            )
+          )
 
-        ws.send(
-          JSON.stringify(
+          broadcast(
             {
               type: 'chat/userLeft',
               payload: user,
             },
             ws
           )
-        )
-
-        broadcast(
-          {
-            type: 'chat/userLeft',
-            payload: user,
-          },
-          ws
-        )
-      }
+        }
+        break
       default:
         break
     }
-    /*eslint-enable*/
   })
-
-  //   ws.on('close', () => {
-  //     users.slice(index, 1)
-  //     broadcast(
-  //       {
-  //         type: 'chat/setOnlineUsers',
-  //         payload: users,
-  //       },
-  //       ws
-  //     )
-  //   })
 })
 
 module.exports = wss
+/*eslint-enable*/

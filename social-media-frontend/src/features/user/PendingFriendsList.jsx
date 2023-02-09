@@ -1,9 +1,8 @@
-import { Container, ListGroup, Button, Image } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Container, ListGroup } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { acceptFriendRequest } from './userSlice'
-import profilepic from 'media/img/profilepic.png'
 import { initializeAllUsers } from 'features/allUsers/allUsersSlice'
+import FriendListItem from './FriendListItem'
 
 function PendingFriendsList({ friends }) {
   const token = useSelector((state) => state.token)
@@ -19,26 +18,9 @@ function PendingFriendsList({ friends }) {
   return (
     <Container>
       <ListGroup>
-        {friends.map((f) => {
-          return (
-            <ListGroup.Item key={f.id}>
-              <Link to={`/profile/${f.id}`}>
-                <Image
-                  className="list-img interactive friendlist-img"
-                  src={f.profilePicture ? f.profilePicture : profilepic}
-                  alt=""
-                />
-              </Link>
-              {f.name}
-              <Button
-                onClick={() => acceptRequest(f.id)}
-                className="float-right"
-              >
-                accept request
-              </Button>
-            </ListGroup.Item>
-          )
-        })}
+        {friends.map((f) => 
+          <FriendListItem key={f.id} hadleClick={acceptRequest} friend={f} buttonLabel='accept request' />
+          )}
       </ListGroup>
     </Container>
   )

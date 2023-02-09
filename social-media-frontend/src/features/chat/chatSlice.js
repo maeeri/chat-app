@@ -55,7 +55,9 @@ const chatSlice = createSlice({
     userLeft(state, action) {
       return {
         ...state,
-        onlineUsers: state.onlineUsers.filter((u) => u !== action.payload),
+        onlineUsers: action.payload
+          ? state.onlineUsers.filter((u) => u.id !== action.payload.id)
+          : state.onlineUsers,
       }
     },
     messageReceived(state, action) {
@@ -73,7 +75,6 @@ const chatSlice = createSlice({
 })
 
 export const sendMessage = (message) => {
-  console.log(message)
   return async (dispatch) => {
     return dispatch(addChatMessage(message))
   }
@@ -105,6 +106,6 @@ export const {
   removeOnlineUser,
   getMessages,
   messageReceived,
-  userLeft
+  userLeft,
 } = chatSlice.actions
 export default chatSlice.reducer

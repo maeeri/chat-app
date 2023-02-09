@@ -1,14 +1,11 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:5000/api/users'
-
-const setToken = (newToken) => {
-  return `bearer ${newToken}`
-}
+let location = document.location
+let baseUrl = `${location.protocol}//${location.hostname}:8080/api/users`
 
 const setConfig = (newToken) => {
   const config = {
-    headers: { Authorization: setToken(newToken) },
+    headers: { Authorization: `bearer ${newToken}` },
   }
   return config
 }
@@ -89,5 +86,5 @@ export {
   changeProfilePicture,
   addFriend,
   deleteUser,
-  removeFriend
+  removeFriend,
 }

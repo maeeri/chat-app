@@ -60,7 +60,7 @@ function SignInModal() {
             />
           </Form.Group>
           <Form.Group name="password" value={password} controlId="password">
-            <Form.Label>username</Form.Label>
+            <Form.Label>password</Form.Label>
             <Form.Control
               type="password"
               onChange={({ target }) => {

@@ -58,11 +58,17 @@ li {
 }
 
 .users-table > tr {
-  border-bottom: 1px solid rgb(209, 208, 208);
+  border-bottom: 1px solid rgb(90, 90, 90);
 }
 
-td {
+td, th {
   margin: 1em;
+  width: 8%;
+}
+
+tr {
+  display: flex;
+  border-bottom: 1px solid rgb(90, 90, 90);
 }
 
 .heading {
@@ -208,8 +214,15 @@ img {
   font-size: 14px;
 }
 
+.users-dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
 .chat-link {
   font-size: smaller;
+  margin-left: 1em;
+  display: block;
 }
 
 .navlink {
@@ -300,6 +313,16 @@ img {
   background: lightgray;
   color: #000000;
   border: none;
+}
+
+.friend-btn {
+  background-color:rgb(41, 37, 37);
+  border: #222;
+}
+
+.friend-btn:hover {
+  background-color:rgb(72, 72, 72);
+  border: #222;
 }
 
 .front-page-button {

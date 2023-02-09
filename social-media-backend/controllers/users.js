@@ -23,9 +23,9 @@ usersRouter.get('/:id', async (req, res, next) => {
 })
 
 usersRouter.post('/', async (req, res, next) => {
+  const { username, password, name, role } = req.body
+  const usernames = (await User.find({})).map((user) => user.username)
   try {
-    const { username, password, name, role } = req.body
-    const usernames = (await User.find({})).map((user) => user.username)
     if (usernames.includes(username)) {
       res.status(400).json({ message: 'Username already in use' })
     } else {
@@ -44,6 +44,7 @@ usersRouter.post('/', async (req, res, next) => {
       })
     }
   } catch (error) {
+    logger.error(error.message)
     next(error)
   }
 })

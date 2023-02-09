@@ -22,7 +22,7 @@ wss.on('connection', (ws) => {
 
   ws.on('message', (message) => {
     const data = JSON.parse(message)
-    logger.info(data)
+
     switch (data.type) {
       case 'chat/addOnlineUser': {
         index = users.length
@@ -76,7 +76,7 @@ wss.on('connection', (ws) => {
         {
           const user = users.find((u) => u.id === data.payload.id)
           const index = users.indexOf(user)
-          console.log(users, user, index)
+          
           if (index > -1) users.splice(index, 1)
           ws.send(
             JSON.stringify(

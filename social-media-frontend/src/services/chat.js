@@ -15,7 +15,7 @@ const setupSocket = (dispatch) => {
 
   socket.onmessage = (event) => {
     const data = JSON.parse(event.data)
-    console.log(data)
+
     switch (data.type) {
       case 'chat/setOnlineUsers':
         dispatch(setOnlineUsers(data.payload))

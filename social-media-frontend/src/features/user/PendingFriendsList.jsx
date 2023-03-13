@@ -9,6 +9,7 @@ function PendingFriendsList({ friends }) {
   const dispatch = useDispatch()
 
   const acceptRequest = async (friendId) => {
+    console.log(friendId)
     await dispatch(acceptFriendRequest(friendId, token))
     await dispatch(initializeAllUsers())
     window.alert('friend request accepted')
@@ -19,7 +20,7 @@ function PendingFriendsList({ friends }) {
     <Container>
       <ListGroup>
         {friends.map((f) => 
-          <FriendListItem key={f.id} hadleClick={acceptRequest} friend={f} buttonLabel='accept request' />
+          <FriendListItem key={f.id} handleClick={acceptRequest} friend={f} buttonLabel='accept request' />
           )}
       </ListGroup>
     </Container>

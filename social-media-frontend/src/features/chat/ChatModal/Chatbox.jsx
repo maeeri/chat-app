@@ -14,7 +14,6 @@ function ChatboxContainer(props) {
 
   useEffect(() => {
     function addUser() {
-      console.log(onlineUsers)
       dispatchAddOnlineUser(user.username, user.id, user.profilePicture)
       dispatchOnlineUsers(onlineUsers)
     }

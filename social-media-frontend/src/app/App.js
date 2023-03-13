@@ -23,6 +23,8 @@ function App() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  !user && window.localStorage.removeItem('socialAppUser')
+
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('socialAppUser')
     if (!user.id && loggedUserJSON) {

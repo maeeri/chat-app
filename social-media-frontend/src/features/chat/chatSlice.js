@@ -47,10 +47,10 @@ const chatSlice = createSlice({
       }
     },
     removeOnlineUser(state, action) {
-      return {
-        ...state,
-        onlineUsers: state.onlineUsers.filter((u) => u !== action.payload),
-      }
+      // return {
+      //   ...state,
+      //   onlineUsers: state.onlineUsers.filter((u) => u !== action.payload),
+      // }
     },
     userLeft(state, action) {
       return {

@@ -17,10 +17,10 @@ function HomePage() {
           {user.id && (
             <span title="go to profile page">
               <Link
-                className="link front-page-button"
+                className="link"
                 to={`/profile/${user.id}`}
               >
-                <h1 className="interactive box">profile</h1>
+                <h1 className="interactive box front-page-button">profile</h1>
               </Link>
             </span>
           )}
@@ -29,8 +29,8 @@ function HomePage() {
         {user.id && (
           <Col sm={{ span: 12 }} lg={{ span: 6 }}>
             <span title="go to user list">
-              <Link className="link front-page-button" to="/users">
-                <h1 className="interactive box">users</h1>
+              <Link className="link" to="/users">
+                <h1 className="interactive box front-page-button">users</h1>
               </Link>
             </span>
           </Col>

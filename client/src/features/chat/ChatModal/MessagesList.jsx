@@ -3,6 +3,7 @@ import { useRef, useEffect } from 'react'
 import { MDBCardBody } from 'mdb-react-ui-kit'
 import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
+import profilePicture from '../../../media/img/profilepic.png'
 
 function ChatMessage({ message }) {
   const user = useSelector((state) => state.user)
@@ -14,7 +15,7 @@ function ChatMessage({ message }) {
       </div>
       <div className="d-flex flex-row justify-content-start">
         <img
-          src={message.avatar}
+          src={message.avatar ? message.avatar : profilePicture}
           alt={`${message.username} avatar`}
           className="chat-avatar"
         />
@@ -45,7 +46,7 @@ function ChatMessage({ message }) {
         </div>
 
         <img
-          src={message.avatar}
+          src={message.avatar ? message.avatar : profilePicture}
           alt={`${message.username} avatar`}
           className="chat-avatar-self"
         />

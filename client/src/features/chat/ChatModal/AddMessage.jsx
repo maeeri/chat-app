@@ -5,6 +5,7 @@ import { MDBInputGroup, MDBCardFooter } from 'mdb-react-ui-kit'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { v4 as uuid } from 'uuid'
+import profilePicture from '../../../media/img/profilepic.png'
 
 const AddMessageComponent = (props) => {
   const [content, setContent] = useState('')
@@ -19,7 +20,7 @@ const AddMessageComponent = (props) => {
   return (
     <section id="new-message">
       <MDBCardFooter className="text-muted d-flex justify-content-start align-items-center p-3">
-        <Image src={user.profilePicture} className="chat-avatar" />
+        <Image src={user.profilePicture ? user.profilePicture : profilePicture} className="chat-avatar" />
         <Form onSubmit={(event) => send(event)}>
           <MDBInputGroup className="mb-0">
             <input

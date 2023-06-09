@@ -1,4 +1,4 @@
-# SocialMediaProject
+# Chat App
 
 This is a practice project made using React Redux, Node.js, MongoDb, the express library and web socket technology.
 
